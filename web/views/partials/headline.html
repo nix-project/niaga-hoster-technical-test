@@ -1,0 +1,45 @@
+<nav id="headline">
+	<div class="container mx-auto px-2 sm:px-24">
+		<div class="flex justify-end items-center relative">
+			<a href="/" class="absolute top-0 left-0 transform h-8" style="font-size: 12px;">
+				<span class="flex justify-start items-center gap-x-2">
+					<span class="bg-blue-500 text-white flex flex-col justify-center items-center h-8 relative" style="padding: 6px;">
+						<i class="fas fa-tag fa-fw -mt-3"></i>
+						<span class="block w-full heading-badge flex-grow absolute"></span>
+					</span>
+					<span class="text-gray-700 hidden sm:block">
+						Gratis Ebook 9 Cara Cerdas Menggunakan Domain [x]
+					</span>
+				</span>
+			</a>
+			<div>
+				<ul class="flex justify-start item-center gap-x-0">
+					<li v-for="(item, idx) in menu" :key="idx">
+						<a :href="item.url" class="flex justify-start items-center gap-x-2 text-gray-700" style="font-size:14px;padding:10.5px 14px;">
+							<span>
+								<i :class="['fas',item.icon,'fa-fw mt-1']" style="font-size:16px;"></i>
+							</span>
+							<span class="hidden sm:block">
+								${item.title}
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<script>
+	const headline = new Vue({
+		el: "#headline",
+		delimiters: ['${','}'],
+		data: {
+			menu: [
+				{ url: '/', title: '0274-5305505', icon: 'fa-phone-alt' },
+				{ url: '/', title: 'Live Chat', icon: 'fa-comment-alt' },
+				{ url: '/', title: 'Member Area', icon: 'fa-user-circle' }
+			]
+		}
+	})
+</script>

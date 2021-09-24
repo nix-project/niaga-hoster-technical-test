@@ -1,0 +1,35 @@
+<div id="scrolltop" class="z-20 fixed bottom-0 right-0 transition-all duration-200 ease-in-out opacity-0">
+   <button class="scroll-top-button" type="button" @click="toTop()">
+      <i class="fas fa-chevron-up fa-fw"></i>
+   </button>
+</div>
+
+<script>
+   const scrollTop = new Vue({
+      el: "#scrolltop",
+      delimiters: ['${','}'],
+      mounted() {
+         document.addEventListener('scroll', this.scrolledWindow);
+      },
+      beforeDestroy() {
+         document.removeEventListener('scroll', this.scrolledWindow);
+      },
+      methods: {
+         scrolledWindow: function() {
+            const el = document.getElementById('scrolltop');
+            if (window.scrollY > 100) {
+               el.classList.remove('opacity-0');
+            } else {
+               el.classList.add('opacity-0');
+            }
+         },
+         toTop: function() {
+            window.scrollTo({
+               top: 0,
+               left: 0,
+               behavior: 'smooth'
+            });
+         }
+      }
+   })
+</script>

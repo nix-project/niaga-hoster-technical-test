@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Niaga Hoster - Home</title>
+	<link rel="stylesheet" href="/assets/css/app.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+	<div class="min-h-screen">
+		<!-- Headline -->
+		{{ include('partials/headline.html') }}
+
+		<!-- Top Navbar -->
+		{{ include('partials/topnav.html') }}
+
+		<main>
+			<!-- Hero Section -->
+			<div class="border-b border-gray-100">
+				<div class="container mx-auto px-4 sm:px-24">
+					{{ include('home/hero.html') }}
+				</div>
+			</div>
+
+			<div class="border-b border-gray-100 mb-12">
+				<div class="container mx-auto px-4 sm:px-24">
+					<!-- Feature Section -->
+					{{ include('home/features.html') }}
+
+					<!-- Pricing Section -->
+					{{ include('home/pricing.html') }}
+
+					<!-- PHP Feature Section -->
+					{{ include('home/php-features.html') }}
+
+					<!-- Paket Hosting -->
+					{{ include('home/paket-hosting.html') }}
+				</div>
+			</div>
+
+			<div>
+				<div class="container mx-auto px-4 sm:px-24">
+					<!-- PHP Module List -->
+					{{ include('home/php-module.html') }}
+
+					<!-- LInux Hosting -->
+					{{ include('home/linux-hosting.html') }}
+				</div>
+
+				<!-- Social Media Share-->
+				{{ include('home/share.html') }}
+			</div>
+
+		</main>
+
+		<footer>
+			{{ include('partials/footer.html') }}
+		</footer>
+
+		<!-- Scroll To Top Button -->
+		{{ include('partials/scrolltop.html') }}
+		
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<nav id="topnav" class="bg-white border-t border-b border-gray-100 py-3 sticky top-0 z-30">
+	<div class="container mx-auto px-2 sm:px-24">
+		<div class="flex justify-between items-center gap-x-5 ">
+			<div class="flex-grow sm:flex-grow-0">
+				<a href="/">
+					<img :src="logo" alt="Niaga Hoster" class="w-32 sm:w-56 h-auto -mt-1">
+				</a>
+			</div>
+			<div class="flex-grow">
+				<ul class="sm:flex justify-end items-center gap-x-2 hidden">
+					<li v-for="(item, idx) in menu" :key="idx">
+						<a :href="item.url"
+							class="p-2 rounded hover:bg-gray-100 transition-all duration-200 ease-in-out text-gray-700"
+							style="font-size:15px;">
+							${item.title}
+						</a>
+					</li>
+				</ul>
+				<button class="block sm:hidden outline-none p-2 rounded float-right" type="button" @click="toggleMenu()">
+					<i class="fas fa-th fa-fw text-gray-500"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div :class="['block sm:hidden fixed top-0 right-0 w-full h-full bg-white transition-all duration-200 ease-in-out', mobile_menu ? '-right-0' : '-right-96']">
+		<div class="relative">
+			<button class="outline-none rounded-full p-3 absolute top-0 right-0" @click="toggleMenu()">
+				<i class="fas fa-times fa-fw"></i>
+			</button>
+			<div class="p-4 pt-10">
+				<ul class="flex flex-col justify-center items-center">
+					<li v-for="(item, idx) in menu" :key="idx" class="w-full flex">
+						<a :href="item.url"
+							class="p-3 text-center w-full rounded hover:bg-gray-100 transition-all duration-200 ease-in-out text-gray-700"
+							style="font-size:15px;">
+							${item.title}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<script>
+	const topnav = new Vue({
+		el: "#topnav",
+		delimiters: ['${', '}'],
+		data: {
+			mobile_menu: false,
+			logo: '/assets/images/logo.png',
+			menu: [
+				{ url: "/", title: "Hosting" },
+				{ url: "/", title: "Domain" },
+				{ url: "/", title: "Server" },
+				{ url: "/", title: "Website" },
+				{ url: "/", title: "Afiliasi" },
+				{ url: "/", title: "Promo" },
+				{ url: "/", title: "Pembayaran" },
+				{ url: "/", title: "Review" },
+				{ url: "/", title: "Kontak" },
+				{ url: "/", title: "Blog" }
+			]
+		},
+		mounted() {
+			document.addEventListener('scroll', this.scrolledNav);
+		},
+		beforeDestroy() {
+			document.removeEventListener('scroll', this.scrolledNav);
+		},
+		methods: {
+			toggleMenu: function() {
+				this.mobile_menu = !this.mobile_menu
+			},
+			scrolledNav: function() {
+				const el = document.getElementById('topnav');
+				if (window.scrollY > 55) {
+					el.classList.add('shadow-sm');
+				} else {
+					el.classList.remove('shadow-sm');
+				}
+			}
+		}
+	})
+</script>

@@ -1,0 +1,43 @@
+<section id="hero">
+	<div class="flex flex-col-reverse sm:flex-row justify-between items-start my-10 gap-x-16">
+		<div class="flex-grow hero-content sm:w-3/6">
+			<header class="mb-8 text-center sm:text-left">
+				<h1 class="hero-title text-gray-600">${title}</h1>
+				<h2 class="hero-subtitle text-gray-600">${subtitle}</h2>
+			</header>
+			<main>
+				<ul class="flex flex-col justify-start items-start gap-y-3">
+					<li v-for="(item, idx) in feature" :key="idx" class="hero-item feature-item hero-feature-item">
+						<span class="checklist-icon">
+							<i class="fas fa-check fa-fw" style="margin-left:2px;"></i>
+						</span>
+						<span>
+							${item}
+						</span>
+					</li>
+				</ul>
+			</main>
+		</div>
+		<div class="flex-grow hero-banner sm:w-3/5 mb-6 sm:mb-0">
+			<img :src="banner" :alt="'Niaga Hosting ' + title" class="float-right" style="width:490px;">
+		</div>
+	</div>
+</section>
+
+<script>
+	const hero = new Vue({
+		el: "#hero",
+		delimiters: ['${', '}'],
+		data: {
+			title: 'PHP Hosting',
+			subtitle: 'Cepat, handal, penuh dengan modul PHP yang Anda butuhkan',
+			feature: [
+				"Solusi PHP untuk performa query yang lebih cepat",
+				"Konsumsi memori yang lebih rendah",
+				"Support PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, PHP 7",
+				"Fitur enkripsi IonCube dan Zend Guard Loaders"
+			],
+			banner: "/assets/svg/banner-php.svg"
+		}
+	});
+</script>

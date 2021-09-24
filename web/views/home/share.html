@@ -1,0 +1,104 @@
+<section id="sosmedShare" style="background-color: #f7f7f7;">
+   <div class="container mx-auto sm:px-24 py-4">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-x-4 p-2">
+         <div class="flex-grow mb-3 sm:mb-0">
+            <h4>Bagikan jika anda menyukai halaman ini</h4>
+         </div>
+         <div>
+            <div class="flex justify-start items-center gap-x-0">
+               <div v-for="(item, idx) in socialMediaCount" class="flex justify-start items-center gap-x-0 cursor-pointer">
+                  <span class="relative z-10">
+                     <i :class="['fab', item.icon,'fa-fw']" :style="'font-size:36px;color:' + item.color"></i>
+                  </span>
+                  <span class="p-1 px-2 rounded text-gray-500 relative" style="border:1px solid #dbdbdb">
+                     <span class="absolute -left-2 baloon-socmed"></span>
+                     <span class="absolute -left-3 baloon-socmed-border"></span>
+                     <span>${counterFormat(item.total)}</span>
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="py-10" style="background-color: #00a2f3;">
+      <div class="container mx-auto sm:px-24">
+         <div class="flex flex-col sm:flex-row justify-between items-center gap-x-2">
+            <div class="flex-grow mb-4 sm:mb-0 border-none sm:border-r border-gray-50 border-opacity-20 py-2">
+               <h1 class="text-white text-center sm:text-left support-text">Perlu <strong>Bantuan?</strong> Hubungi Kami : <strong class="font-extrabold">0274-5305505</strong></h1>
+            </div>
+            <div class="sm:pl-16">
+               <button class="p-3 px-6 rounded-full border-2 border-white text-white hover:bg-black hover:bg-opacity-10">
+                  <div class="flex justify-between items-center gap-x-3">
+                     <span class="flex">
+                        <i class="fas fa-comment-alt fa-fw" style="font-size: 24px;"></i>
+                     </span>
+                     <span class="text-lg font-bold">
+                        Live Chat
+                     </span>
+                  </div>
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<style type="text/css">
+   .baloon-socmed {
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid #f7f7f7;
+      z-index: 9;
+      top: 8px;
+   }
+   .baloon-socmed-border {
+      z-index: 8;
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 11px solid #dbdbdb;
+      top: 8px;
+   }
+   .support-text {
+      font-size: 34px;
+   }
+
+   @media(max-width: 640px) {
+      .support-text {
+         font-size: 26px;
+      }
+   }
+</style>
+
+<script>
+	const sosmedShare = new Vue({
+		el: "#sosmedShare",
+		delimiters: ['${', '}'],
+		data: {
+			socialMediaCount: []
+		},
+      mounted() {
+         this.getSummary();
+      },
+      methods: {
+         getSummary: async function() {
+            try {
+               const data = await fetch(`/json/socmed.json`).then(res => res.json());
+               this.socialMediaCount = data;
+            } catch (error) {
+               console.log(error.message);
+            }
+         },
+         counterFormat: function(total) {
+            if (total > 10000) {
+               return total / 10000 * 10 + 'k'
+            } else {
+               return total;
+            }
+         }
+      }
+	})
+</script>

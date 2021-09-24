@@ -1,0 +1,12 @@
+{
+    "name": "angga/frontend-test",
+    "authors": [
+        {
+            "name": "Angga NIX",
+            "email": "angga@sard.maxindo.net.id"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}

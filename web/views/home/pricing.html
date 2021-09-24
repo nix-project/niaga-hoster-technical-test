@@ -1,0 +1,83 @@
+<section id="pricing" class="mb-20">
+	<header class="mb-14">
+		<h2 class="text-center pricing-title text-gray-600">Paket Hosting Singapura yang Tepat</h2>
+		<h3 class="text-center pricing-subtitle text-gray-600">Diskon ${diskon}% + Domain dan SSL Gratis untuk Anda</h3>
+	</header>
+	<main>
+		<div class="grid grid-cols-1 sm:grid-cols-12">
+			<div v-for="(item, idx) in list" :key="idx"
+				:class="['pricing-item', item.best_seller ? 'pricing-item-best' : 'pricing-item-regular']">
+				<div
+					:class="['pricing-item-title-wrapper', item.best_seller ? 'pricing-item-title-best' : 'pricing-item-title-regular']">
+					<h4 class="text-center pricing-name">${item.name}</h4>
+				</div>
+				<div
+					:class="['pricing-item-cost', item.best_seller ? 'pricing-item-cost-best' : 'pricing-item-cost-regular']">
+					<div class="mt-2 mb-1">
+						<h5 class="pricing-sale-price">
+							<strike>
+								Rp ${(item.sale_price).toLocaleString('id-ID')}
+							</strike>
+						</h5>
+					</div>
+					<div>
+						<h1 class="flex justify-center items-start" style="font-size:16px;"
+							v-html="'<span class=\'mr-2\'>Rp</span>' + generateCost(item.cost) +'</span>/ bln</span>'"></h1>
+					</div>
+				</div>
+				<div
+					:class="['pricing-item-registered-user', item.best_seller ? 'pricing-item-registered-best' : 'pricing-item-registered-regular']">
+					<h5 class="p-2 text-sm" style="font-size:14px;">
+						<strong>${(item.registered).toLocaleString('id-ID')}</strong> Pengguna Terdaftar</h5>
+				</div>
+				<div :class="['pricing-item-feature-list', item.best_seller ? 'border-blue-500' : 'border-gray-200']">
+					<div v-for="feature in item.features" :key="feature.name" class="w-full text-center text-gray-700"
+						v-html="feature" style="font-size:14px;"></div>
+					<a v-if="item.best_seller" class="pricing-choice-best" href="/">
+						Pilih Sekarang
+					</a>
+					<a v-else class="pricing-choice-regular" href="/">
+						<span v-if="item.diskon">Diskon ${item.diskon}%</span> <span v-else>Pilih Sekarang</span>
+					</a>
+				</div>
+				<div v-if="item.best_seller" class="ribbon ribbon-top-left">
+					<span>Best Seller!</span>
+				</div>
+			</div>
+		</div>
+	</main>
+</section>
+
+<script>
+	const pricing = new Vue({
+		el: "#pricing",
+		delimiters: ['${', '}'],
+		data: {
+			diskon: 40,
+			list: []
+		},
+		mounted() {
+			this.getPricingList();
+		},
+		methods: {
+			getPricingList: async function () {
+				try {
+					const data = await fetch('/json/pricing.json').then(res => res.json());
+					this.list = data;
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			generateCost: function (price) {
+				const priceData = (price.toLocaleString('id-ID')).split(".");
+				const firstDecimal = priceData[0];
+				priceData.shift();
+				return `
+				<span class="cost-label">
+					<span class="strong-cost">${firstDecimal}</span>.<span style="font-size:16px;">${priceData.join(".")}</span>
+				</span>
+				`;
+			}
+		}
+	})
+</script>

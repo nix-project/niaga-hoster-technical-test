@@ -1,0 +1,107 @@
+<section id="paket-hosting">
+	<h4 class="text-center text-3xl mb-10 text-gray-700">Semua Paket Hosting Sudah Termasuk</h4>
+	<div class="grid grid-cols-4 sm:grid-cols-12 gap-x-6 sm:gap-x-20 gap-y-6 sm:gap-y-24 mb-12">
+		<div class="col-span-2 sm:col-span-4" v-for="(item, idx) in list">
+			<div class="flex flex-col justify-center items-center gap-y-4" :key="idx">
+				<div>
+					<img :src="item.image" :alt="item.title" class="mx-auto w-16">
+				</div>
+				<div class="text-center">
+					<h2 class="paket-title text-gray-700">${item.title}</h2>
+					<p class="paket-description text-gray-600" v-html="item.description"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex justify-center items-center mb-10">
+		<div class="w-20 border-b-4 border-gray-100"></div>
+	</div>
+	<h4 class="text-center text-3xl mb-8 text-gray-700">Mendukung Penuh Framework Laravel</h4>
+	<div class="flex flex-col-reverse sm:flex-row justify-between items-start gap-x-4">
+		<div class="flex-grow sm:max-w-xl">
+			<h5 class="mb-5 text-center sm:text-left text-gray-600" style="font-size: 17px;line-height:1.8rem;letter-spacing:0.04rem;">
+				Tak perlu menggunakan dedicated server ataupun VPS
+				yang mahal. Layanan PHP hosting murah kami
+				mendukung penuh framework favorit Anda
+			</h5>
+			<ul class="flex flex-col justify-start items-start gap-y-4 mb-4">
+				<li v-for="(item, idx) in laravel_feature" :key="idx" style="font-size: 15px;" class="text-gray-700">
+					<div class="flex justify-start items-center gap-x-3">
+						<span class="checklist-icon">
+							<i class="fas fa-check fa-fw" style="margin-left:2px;"></i>
+						</span>
+						<span v-html="item"></span>
+					</div>
+				</li>
+			</ul>
+			<div class="flex my-6">
+				<small class="text-gray-600 text-center sm:text-left">Nb. Composer dan SSH hanya tersedia pada paket Personal dan Bisnis</small>
+			</div>
+			<div class="flex justify-center sm:justify-start">
+				<a href="/" class="p-2 px-6 text-lg rounded-full bg-blue-500 hover:bg-blue-600 text-white text-center">
+					Pilih Hosting Anda
+				</a>
+			</div>
+		</div>
+		<div class="flex-grow sm:max-w-lg mb-5 sm:mb-0">
+			<img src="/assets/svg/laravel.svg" alt="Layanan PHP Hosting murah Niaga Hoster" class="w-full mt-6">
+		</div>
+	</div>
+</section>
+
+<style type="text/css">
+	.paket-title {
+		font-family: MontserratBold;
+		font-size: 20px;
+	}
+
+	.paket-description {
+		font-size: 14px;
+	}
+</style>
+
+<script>
+	const paketHosting = new Vue({
+		el: "#paket-hosting",
+		delimiters: ['${', '}'],
+		data: {
+			list: [
+				{
+					title: "PHP Semua Versi",
+					description: "Pilih mulai dari versi PHP 5.3 s/d PHP 7.<br />Ubah sesuka Anda!",
+					image: "/assets/svg/php-semua-versi.svg"
+				},
+				{
+					title: "MySQL Versi 5.6",
+					description: "Nikmati MySQL versi terbaru, tercepat dan<br />kaya akan fitur.",
+					image: "/assets/svg/php-mysql.svg"
+				},
+				{
+					title: "Panel Hosting cPanel",
+					description: "Kelola website dengan panel canggih yang<br />familiar di hati Anda.",
+					image: "/assets/svg/php-cpanel.svg"
+				},
+				{
+					title: "Garansi Uptime 99.9%",
+					description: "Data center yang mendukung kelangsungan<br />website Anda 24/7.",
+					image: "/assets/svg/php-uptime.svg"
+				},
+				{
+					title: "Database InnoDB Unlimited",
+					description: "Jumlah dan ukuran database yang tumbuh<br />sesuai kebutuhan Anda.",
+					image: "/assets/svg/php-db-cpanel.svg"
+				},
+				{
+					title: "Wildcard Remote MySQL",
+					description: "Mendukung s/d 25 max_user_connections dan 100 max_connections.",
+					image: "/assets/svg/php-connection.svg"
+				}
+			],
+			laravel_feature: [
+				"Install Laravel <strong>1 klik</strong> dengan Softaculous Installer",
+				"Mendukung ekstensi <strong>PHP MCrypt, phar, mbstring, json,</strong> dan <strong></strong>",
+				"Tersedia <strong>Composer</strong> dan <strong>SSH</strong> untuk menginstall packages pilihan Anda."
+			]
+		}
+	})
+</script>

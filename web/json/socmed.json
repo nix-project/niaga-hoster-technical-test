@@ -1,0 +1,17 @@
+[
+   {
+      "icon": "fa-facebook-square",
+      "total": 80000,
+      "color": "#23599b"
+   },
+   {
+      "icon": "fa-twitter-square",
+      "total": 450,
+      "color": "#00aef1"
+   },
+   {
+      "icon": "fa-google-plus-square",
+      "total": 1900,
+      "color": "#fc4a35"
+   }
+]

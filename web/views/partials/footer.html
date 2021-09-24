@@ -1,0 +1,205 @@
+<div id="footer" style="background-color: #303030;">
+   <div class="container mx-auto px-4 sm:px-24 pt-10 pb-0 sm:pt-16 sm:pb-2">
+      <!-- Row 1 -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 mb-0 sm:mb-16">
+         <div class="col-span-12 sm:col-span-3 mb-10 sm:mb-0" v-for="(item, idx) in row_1" :key="idx">
+            <header class="mb-4">
+               <h3 class="uppercase font-bold text-gray-300 text-opacity-40" style="font-size:14px;">${item.title}</h3>
+            </header>
+            <main class="text-gray-300" style="font-size:13px;">
+               <div v-if="Array.isArray(item.data)">
+                  <ul class="flex flex-col justify-start item-start gap-y-1">
+                     <li v-for="(link, x) in item.data" :key="x">
+                        <a :href="link.url">${link.title}</a>
+                     </li>
+                  </ul>
+               </div>
+               <div v-else>
+                  <div v-html="item.data"></div>
+               </div>
+            </main>
+         </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="grid grid-cols-12 mb-0 sm:mb-16">
+         {# Col 1 Row 2 #}
+         <div class="col-span-12 sm:col-span-3 mb-10 sm:mb-0">
+            <header class="mb-4">
+               <h3 class="uppercase font-bold text-gray-300 text-opacity-40" style="font-size:14px;">Tentang Kami</h3>
+            </header>
+            <main class="text-gray-300" style="font-size:13px;">
+               <ul class="flex flex-col justify-start item-start gap-y-1">
+                  <li v-for="(link, x) in tentang_kami" :key="x">
+                     <a :href="link.url">${link.title}</a>
+                  </li>
+               </ul>
+            </main>
+         </div>
+         {# Col 2 Row 2 #}
+         <div class="col-span-12 sm:col-span-3 mb-10 sm:mb-0">
+            <header class="mb-4">
+               <h3 class="uppercase font-bold text-gray-300 text-opacity-40" style="font-size:14px;">Kenapa Pilih NiagaHoster?</h3>
+            </header>
+            <main class="text-gray-300" style="font-size:13px;">
+               <ul class="flex flex-col justify-start item-start gap-y-1">
+                  <li v-for="(link, x) in reason" :key="x">
+                     <a :href="link.url">${link.title}</a>
+                  </li>
+               </ul>
+            </main>
+         </div>
+         {# Col 3 Row 2 #}
+         <div class="col-span-12 sm:col-span-3 mb-10 sm:mb-0">
+            <header class="mb-4">
+               <h3 class="uppercase font-bold text-gray-300 text-opacity-40 text-center sm:text-left" style="font-size:14px;">Newsletter</h3>
+            </header>
+            <main class="text-gray-300" style="font-size:13px;">
+               <div class="relative bg-white p-1 px-2 rounded-full">
+                  <input type="email" name="email" id="email" class="outline-none p-3 rounded-full text-gray-800" placeholder="Email">
+                  <button type="button" class="absolute right-1 outline-none p-2 py-3 rounded-full text-white" style="background: #00a2f3;">Berlangganan</button>
+               </div>
+               <span class="block mt-2 text-white text-opacity-40 text-center sm:text-left" style="font-size: 14px;">
+                  Dapatkan promo dan konten menarik<br />
+                  dari penyedia hosting terbaik Anda.
+               </span>
+            </main>
+         </div>
+         {# Col 4 Row 2 #}
+         <div class="col-span-12 sm:col-span-3 mb-10 sm:mb-0">
+            <header class="mb-0 sm:mb-4">
+               <h3 class="uppercase font-bold text-gray-300 text-opacity-40" style="font-size:14px;">&nbsp;</h3>
+            </header>
+            <main class="text-gray-300" style="font-size:13px;">
+               <div class="flex justify-center items-center gap-x-8 -mt-1">
+                  <a v-for="(link, x) in socmed" :key="x" :href="link.url" class="flex justify-center items-center w-14 h-14 rounded-full border-2 border-white">
+                     <i :class="['fab',link.icon,'fa-fw text-2xl']"></i>
+                  </a>
+               </div>
+            </main>
+         </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 mb-0 sm:mb-4">
+         {# Col 1 Row 3 #}
+         <div class="col-span-12 mb-10 sm:mb-0">
+            <header class="mb-4">
+               <h3 class="uppercase font-bold text-gray-300 text-opacity-40 text-center sm:text-left" style="font-size:14px;">Pembayaran</h3>
+            </header>
+            <main class="text-gray-300" style="font-size:13px;">
+               <ul class="flex flex-wrap justify-center sm:justify-start items-center sm:items-start gap-y-2 gap-x-2">
+                  <li v-for="(bank, x) in bank_list" :key="x" class="rounded-lg border border-white border-opacity-600 p-2">
+                     <img alt="" :src="bank.image" class="w-16 h-6 filter grayscale ..." />
+                  </li>
+               </ul>
+               <span class="block mt-6 mb-10 text-white text-opacity-40 text-center sm:text-left" style="font-size: 14px;">Aktivasi instant dengan e-Payment. Hosting dan domain langsung aktif!</span>
+               <span class="border-b border-black border-opacity-20 block w-full"></span>
+               <div class="flex flex-col sm:flex-row justify-between items-start my-4">
+                  <div class="flex-grow text-white text-center sm:text-left" style="font-size: 11px;">
+                     <p class="mb-2">
+                        Copyright &copy; 2016 Niagahoster | Hosting powered by PHP7, CloudLinux, CloudFlare, BitNinja and DC Biznet Technovillage Jakarta
+                     </p>
+                     <p>
+                        Cloud VPS Murah power by Webuzo Softaculous, Intel SSD and cloud computing technology
+                     </p>
+                  </div>
+                  <div class="flex w-full text-center sm:text-right">
+                     <a href="/" style="font-size: 13px;" class="w-full">Syarat dan ketentuan berlaku</a>
+                  </div>
+               </div>
+            </main>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+   const footer = new Vue({
+      el: "#footer",
+      delimiters: ['${', '}'],
+      data: {
+         row_1: [
+            {
+               title: "Hubungi Kami",
+               data:
+                  `
+                     <div class="mb-3">
+                        0274-5305505<br />
+                        Senin - Minggu<br />
+                        24 Jam Nontstop<br />
+                     </div>
+                     <div>
+                        <p>
+                           Jl. Selokan Mataram Monjali<br />
+                           Karangjati MT I/304<br />
+                           Sinduadi, Mlati, Sleman<br />
+                           Yogyakarta 55284
+                        </p>
+                     </div>
+                  `
+            },
+            {
+               title: "Layanan",
+               data: [
+                  { url: "/", title: "Domain" },
+                  { url: "/", title: "Shared Hosting" },
+                  { url: "/", title: "Cloud VPS Hosting" },
+                  { url: "/", title: "Managed VPS Hosting" },
+                  { url: "/", title: "Web Builder" },
+                  { url: "/", title: "Keamanan SSL / HTTPS" },
+                  { url: "/", title: "Jasa Pembuatan Website" },
+                  { url: "/", title: "Program Afiliasi" }
+               ]
+            },
+            {
+               title: "Service Hosting",
+               data: [
+                  { url: "/", title: "Hosting Murah" },
+                  { url: "/", title: "Hosting Indonesia" },
+                  { url: "/", title: "Hosting Singapura SG" },
+                  { url: "/", title: "Hosting PHP" },
+                  { url: "/", title: "Hosting Wordpress" },
+                  { url: "/", title: "Hosting Laravel" },
+               ]
+            },
+            {
+               title: "Tutorial",
+               data: [
+                  { url: "/", title: "Knowledgebase" },
+                  { url: "/", title: "Blog" },
+                  { url: "/", title: "Cara Pembayaran" },
+               ]
+            }
+         ],
+         tentang_kami: [
+            { url: "/", title: "Tim Niagahoster" },
+            { url: "/", title: "Karir" },
+            { url: "/", title: "Events" },
+            { url: "/", title: "Penawaran & Promo Spesial" },
+            { url: "/", title: "Kontak Kami" }
+         ],
+         reason: [
+            { url: "/", title: "Support Terbaik" },
+            { url: "/", title: "Garansi Harga Termurah" },
+            { url: "/", title: "Domain Gratis Selamanya" },
+            { url: "/", title: "Datacenter Hosting Terbaik" },
+            { url: "/", title: "Review Pelanggan" }
+         ],
+         socmed: [
+            { url: "/", icon: "fa-facebook-f" },
+            { url: "/", icon: "fa-twitter" },
+            { url: "/", icon: "fa-google-plus-g" },
+         ],
+         bank_list: [
+            { url: "/", image: "https://www.seekpng.com/png/full/716-7165628_bank-bca.png" },
+            { url: "/", image: "/assets/images/mandiri.png" },
+            { url: "/", image: "https://www.pasartrainer.com/assets/grayscale-bni.png" },
+            { url: "/", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" },
+            { url: "/", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/MasterCard_early_1990s_logo.svg/1280px-MasterCard_early_1990s_logo.svg.png" },
+            { url: "/", image: "/assets/images/atm-bersama.png" },
+            { url: "/", image: "/assets/images/permata.png" },
+            { url: "/", image: "/assets/images/prima.png" },
+            { url: "/", image: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Logo_ALTO_Network.png" }
+         ]
+      }
+   })
+</script>

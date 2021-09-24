@@ -1,0 +1,53 @@
+<section id="php-feature" class="mb-8">
+	<h4 class="text-center text-3xl mb-6 text-gray-700">Powerful dengan Limit PHP yang lebih Besar</h4>
+	<div class="flex flex-col sm:flex-row justify-center items-start gap-x-8 mb-12">
+		<div class="flex-grow w-full sm:max-w-sm border border-b-0 border-gray-100 mb-3 sm:mb-0">
+			<div v-for="(item, idx) in list">
+				<div :key="idx" v-if="idx < 3" :class="['php-feature-item', (idx + 1) % 2 === 0 ? 'bg-gray-100' : '']">
+					<div class="mt-0.5 mx-2">
+						<span class="checklist-icon">
+							<i class="fas fa-check fa-fw" style="margin-left:2px;"></i>
+						</span>
+					</div>
+					<div class="text-center flex-grow w-full text-gray-700" style="font-size:16px;">
+						<h4>${item}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="flex-grow w-full sm:max-w-sm border border-b-0 border-gray-100 mb-3 sm:mb-0">
+			<div v-for="(item, idx) in list">
+				<div :key="idx" v-if="idx > 2" :class="['php-feature-item', (idx + 1) % 2 !== 0 ? 'bg-gray-100' : '']">
+					<div class="mt-0.5 mx-2">
+						<span class="checklist-icon">
+							<i class="fas fa-check fa-fw" style="margin-left:2px;"></i>
+						</span>
+					</div>
+					<div class="text-center flex-grow w-full text-gray-700" style="font-size:16px;">
+						<h4>${item}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex justify-center items-center">
+		<div class="w-20 border-b-4 border-gray-100"></div>
+	</div>
+</section>
+
+<script>
+	const phpFeature = new Vue({
+		el: "#php-feature",
+		delimiters: ['${', '}'],
+		data: {
+			list: [
+				"max execution time 300s",
+				"max execution time 300s",
+				"php memory limit 1024",
+				"post max size 128 MB",
+				"upload max filesize 128 MB",
+				"max input vars 2500"
+			]
+		}
+	})
+</script>

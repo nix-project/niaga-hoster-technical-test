@@ -1,0 +1,26 @@
+<section id="features" class="py-2 mb-2 sm:py-12 sm:mb-12">
+	<div class="flex flex-col sm:flex-row justify-center items-center sm:gap-x-12">
+		<div v-for="(item, idx) in list" :key="idx" class="flex flex-col justify-center items-center">
+			<div class="flex justify-center items-center mb-3">
+				<img :src="item.image" :alt="'Niaga Hoster ' + item.title" class="h-24 sm:h-36 w-52 object-contain block mx-auto">
+			</div>
+			<div class="hidden sm:block">
+				<h4 style="font-size:16px;" class="text-gray-600">${item.title}</h4>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const features = new Vue({
+		el: "#features",
+		delimiters: ['${', '}'],
+		data: {
+			list: [
+				{ title: 'PHP Zend Guard Loader', image: '/assets/images/zend.png' },
+				{ title: 'PHP Composer', image: '/assets/images/composer.png' },
+				{ title: 'PHP IonCube Loader', image: '/assets/images/ioncube.png' }
+			]
+		}
+	})
+</script>

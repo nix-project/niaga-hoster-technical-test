@@ -1,0 +1,36 @@
+<section id="phpModule" class="py-4 mb-16">
+   <h4 class="text-3xl text-center mb-14 text-gray-700">Modul Lengkap untuk Menjalankan Aplikasi PHP Anda.</h4>
+	<div class="grid grid-cols-4 sm:grid-cols-12 px-4 gap-x-4 sm:px-20 sm:gap-x-24">
+      <div v-for="(item, idx) in list" :key="idx" class="col-span-2 sm:col-span-3 text-gray-700">
+         <h4 class="text-center sm:text-left">${item}</h4>
+      </div>
+   </div>
+   <div class="flex justify-center items-center mt-12">
+      <a href="/" class="p-2 px-6 rounded-full border-2 border-gray-700 mx-auto font-bold hover:bg-gray-800 hover:text-white">
+         Selengkapnya
+      </a>
+   </div>
+</section>
+
+<script>
+	const phpModule = new Vue({
+		el: "#phpModule",
+		delimiters: ['${', '}'],
+		data: {
+			list: []
+		},
+      mounted() {
+         this.getModule();
+      },
+      methods: {
+         getModule: async function() {
+            try {
+               const data = await fetch(`/json/php-module.json`).then(res => res.json());
+               this.list = data;
+            } catch (error) {
+               console.log(error.message);
+            }
+         }
+      }
+	})
+</script>

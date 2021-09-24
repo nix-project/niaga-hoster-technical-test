@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: MontserratLight;
+  src: url("/assets/fonts/montserrat/Montserrat-Light.otf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: MontserratBold;
+  src: url("/assets/fonts/montserrat/Montserrat-Bold.otf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: RobotoRegular;
+  src: url("/assets/fonts/roboto/Roboto-Regular.ttf");
+  font-style: normal;
+}
+
+body {
+  font-family: MontserratLight;
+  scroll-behavior: smooth;
+}
+
+.heading-badge {
+  width: 0;
+  height: 0;
+  border-left: 13px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #fff;
+  bottom: 0;
+  left: 0;
+}
+
+/* Hero */
+.hero-title {
+  font-family: MontserratBold;
+  font-size: 36px;
+}
+
+.hero-item {
+  @apply flex justify-start items-center gap-x-2 text-gray-600;
+}
+
+.hero-subtitle {
+  font-size: 28px;
+  line-height: 2.2rem;
+}
+
+.hero-content {
+  /* max-width: 450px; */
+}
+
+.hero-banner {
+  /* max-width: 450px; */
+}
+
+.hero-feature-item {
+  font-size: 16px;
+  letter-spacing: 0.04rem;
+}
+
+.checklist-icon {
+  @apply text-white rounded-full w-5 h-5 flex justify-center items-center;
+  background-color: #13b63f;
+  font-size: 12px;
+  padding: 8px;
+}
+
+/* Pricing */
+.pricing-item {
+  @apply relative col-span-1 sm:col-span-3 rounded-sm;
+  margin: 0 -0.1px;
+}
+
+.pricing-item-regular {
+  @apply z-10;
+}
+
+.pricing-item-best {
+  @apply z-20;
+}
+
+.pricing-item-title-wrapper {
+  @apply flex-grow p-1 px-3 rounded-t border;
+}
+
+.pricing-item-title-best {
+  @apply border-blue-400 bg-blue-400 text-white;
+}
+
+.pricing-item-title-regular {
+  @apply border-gray-200 text-gray-700;
+}
+
+.pricing-item-cost {
+  @apply flex-grow flex flex-col justify-start items-center border-b border-l border-r;
+}
+
+.pricing-item-cost-best {
+  @apply border-blue-400 bg-blue-400 text-white;
+}
+
+.pricing-item-cost-regular {
+  @apply border-gray-200 text-gray-600;
+}
+
+.pricing-item-registered-user {
+  @apply text-center border-b border-l border-r;
+}
+
+.pricing-item-registered-best {
+  @apply border-blue-500 bg-blue-500 text-white;
+}
+
+.pricing-item-registered-regular {
+  @apply border-gray-200 text-gray-600;
+}
+
+.pricing-item-feature-list {
+  font-family: RobotoRegular;
+  @apply flex-grow flex flex-col justify-center rounded-b items-start p-2 py-6 gap-y-2 border border-t-0;
+}
+
+.pricing-choice-best {
+  @apply mx-auto mt-5 font-bold p-2 px-4 rounded-full border-0 bg-blue-500 text-white hover:bg-blue-600;
+  font-size: 14px;
+}
+
+.pricing-choice-regular {
+  @apply mx-auto mt-5 font-bold text-gray-700 p-2 px-4 rounded-full border-2 border-gray-700 hover:bg-gray-700 hover:text-white;
+  font-size: 14px;
+}
+
+.pricing-title {
+  font-size: 30px;
+  font-family: MontserratBold;
+  letter-spacing: 0.03rem;
+}
+.pricing-subtitle {
+  font-size: 26px;
+  letter-spacing: 0.03rem;
+}
+.pricing-name {
+  font-size: 24px;
+  font-family: MontserratBold;
+}
+.pricing-sale-price {
+  font-size: 16px;
+}
+.cost-label {
+  font-family: MontserratBold;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.strong-cost {
+  font-size: 46px;
+  margin-top: -14px;
+}
+.ribbon {
+  width: 120px;
+  height: 90px;
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  display: block;
+  border: 5px solid #19b34d;
+}
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 250px;
+  padding: 12px 0;
+  background-color: #19b34d;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font: 700 11.5px/1 "Lato", sans-serif;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center;
+  padding-left: 42px;
+}
+
+/* top left*/
+.ribbon-top-left {
+  top: -5px;
+  left: -5px;
+}
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-top-left::before {
+  top: -5px;
+  right: 28.5px;
+}
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-top-left span {
+  right: -22px;
+  top: 30px;
+  transform: rotate(-45deg);
+}
+
+.scroll-top-button {
+  @apply outline-none rounded-full flex justify-center items-center w-12 h-12 bg-blue-500 text-white m-2 shadow-lg;
+}
+
+/* PHP Feature */
+.php-feature-item {
+	@apply flex justify-start mx-auto items-center gap-x-2 p-1 px-2 border-b border-gray-100 py-2;
+}
+
+@media(max-width: 640px) {
+  .pricing-title {
+    font-size: 24px;
+  }
+  .pricing-subtitle {
+    font-size: 18px;
+  }
+  .pricing-item {
+    @apply mb-3;
+  }
+  .paket-title {
+    font-size: 16px !important;
+  }
+  .paket-description {
+    font-size: 13px !important;
+  }
+}
